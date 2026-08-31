@@ -1,15 +1,18 @@
 Feature: OrangeHRM Login
-  As an authorized OrangeHRM user
-  I want to authenticate using my credentials
-  So that I can securely access the OrangeHRM application
 
-  Background:
-    Given the user navigates to the OrangeHRM login page
+  As a user
+  I want to login to OrangeHRM
+  So that I can access the dashboard
 
-  Scenario: Verify Login page is displayed
-    Then the Username field should be displayed
-    And the Password field should be displayed
-    And the Login button should be displayed
-    And the Forgot Password link should be displayed
 
- 
+  Scenario Outline: Login with valid credentials
+
+    Given user is on the OrangeHRM login page
+    When user enters username "<username>"
+    And user enters password "<password>"
+    And user clicks on login button
+    Then OrangeHRM dashboard should be displayed
+
+    Examples:
+      | username | password |
+      | Admin    | admin123 |
